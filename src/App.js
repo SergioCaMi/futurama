@@ -1,12 +1,11 @@
 import { Component } from "react";
 // import logo from "./logo.svg";
 import "./App.css";
+import CardList from "./components/card-list/card-list.component";
 
 class App extends Component {
-
   //Constructor
   constructor(props) {
-    console.log("Constructor");
     super(props);
     this.state = {
       characters: [],
@@ -16,7 +15,6 @@ class App extends Component {
 
   //onMount
   componentDidMount() {
-    console.log("DidMount");
     fetch("https://api.sampleapis.com/futurama/characters")
       .then((response) => response.json()) //Cualquier cosa devuelta de la API se guarda en response
       .then((users) =>
@@ -24,9 +22,6 @@ class App extends Component {
           () => {
             return { characters: users };
           },
-          () => {
-            console.log(this.state);
-          }
         )
       ); //Cualquier cosa devuulta por el then anterior se guardará en users
   }
@@ -39,12 +34,11 @@ class App extends Component {
     });
   };
 
-  //renderizamos
+  //template
   render() {
-    console.log("Render");
     const { onSearchChange } = this; // Traigo la función a una variable dentro del render().
-    const {characters, searchField} = this.state //Traigo las variables de estado
-    
+    const { characters, searchField } = this.state; //Traigo las variables de estado
+
     const filterCharacters = characters.filter(
       (c) =>
         c.name.first.toLowerCase().includes(searchField) ||
@@ -52,7 +46,6 @@ class App extends Component {
         c.name.last.toLowerCase().includes(searchField)
     );
 
-    //template
     return (
       <div className="App">
         <header className="App-header">
@@ -65,14 +58,7 @@ class App extends Component {
             onChange={onSearchChange}
           />
 
-          {filterCharacters.map((c) => (
-            <div key={c.id}>
-              <h3>
-                {c.name.first} {c.name.middle} {c.name.last}
-              </h3>
-              <img src={c.images.main} alt={c.name.first}></img>
-            </div>
-          ))}
+          <CardList characters={filterCharacters}/>
         </header>
       </div>
     );
