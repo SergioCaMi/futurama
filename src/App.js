@@ -2,6 +2,7 @@ import { Component } from "react";
 // import logo from "./logo.svg";
 import "./App.css";
 import CardList from "./components/card-list/card-list.component";
+import SearchBox from "./components/search-box/search-box.component";
 
 class App extends Component {
   //Constructor
@@ -50,14 +51,7 @@ class App extends Component {
       <div className="App">
         <header className="App-header">
           <h1>My favourite characters of Futurama</h1>
-
-          <input
-            className="search-box"
-            type="search"
-            placeholder="search characters"
-            onChange={onSearchChange}
-          />
-
+          <SearchBox onSearchChange={onSearchChange}/>
           <CardList characters={filterCharacters}/>
         </header>
       </div>

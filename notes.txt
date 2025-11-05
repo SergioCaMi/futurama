@@ -1,0 +1,10 @@
+Snippets principales:
+rafce → React Arrow Function Component Export
+rfc → React Function Component
+rcc → React Class Component
+rccp → React Class Component with PropTypes
+
+Snippets:
+imr → import React
+sfc → Stateless Function Component
+cc → Class Component
