@@ -10,8 +10,15 @@
   backface-visibility: hidden;
   transform: translateZ(0);
   transition: transform 0.25s ease-out;
+   align-items: center; 
+  text-align: center;
 }
 
 .card-container:hover {
   transform: scale(1.05);
+}
+
+.card-container img {
+  max-height: 300px;
+  width: auto;
 }
